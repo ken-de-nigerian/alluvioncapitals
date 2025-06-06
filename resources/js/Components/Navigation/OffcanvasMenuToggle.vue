@@ -1,0 +1,6 @@
+<template>
+    <button type="button" class="fixed-bottom z-sticky w-100 btn btn-lg btn-dark border-0 border-top border-light border-opacity-10 rounded-0 pb-4 d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#accountSidebar" aria-controls="accountSidebar" data-bs-theme="light">
+        <i class="ci-sidebar fs-base me-2"></i>
+        Account menu
+    </button>
+</template>
