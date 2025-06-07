@@ -5,14 +5,13 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from "ziggy-js";
 
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // Dynamic imports for layouts
 const MainLayout = () => import('./Shared/Layouts/MainLayout.vue');
 const AuthLayout = () => import('./Shared/Layouts/AuthLayout.vue');
 const AdminLayout = () => import('./Shared/Layouts/AdminLayout.vue');
 const UserLayout = () => import('./Shared/Layouts/UserLayout.vue');
-const CampaignLayout = () => import('./Shared/Layouts/CampaignLayout.vue');
-const WidgetLayout = () => import('./Shared/Layouts/WidgetLayout.vue');
 
 // Dynamic imports for components
 const QuillEditor = () => import('./Components/Editor/QuillEditor.vue');
@@ -36,10 +35,6 @@ const app = createInertiaApp({
             page.default.layout = page.default.layout || (await AdminLayout()).default;
         } else if (name.startsWith('User/')) {
             page.default.layout = page.default.layout || (await UserLayout()).default;
-        } else if (name.startsWith('Campaign/Create') || name.startsWith('Campaign/Edit')) {
-            page.default.layout = page.default.layout || (await CampaignLayout()).default;
-        } else if (name.startsWith('Campaign/Widgets')) {
-            page.default.layout = page.default.layout || (await WidgetLayout()).default;
         } else {
             page.default.layout = page.default.layout || (await MainLayout()).default;
         }

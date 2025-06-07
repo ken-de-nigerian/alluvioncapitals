@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Campaign;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -41,7 +40,6 @@ class HandleInertiaRequests extends Middleware
             'app' => [
                 'name' => config('app.name'),
             ],
-            'lazySpinner' => asset('assets/images/in-lazy.svg'),
             'flash' => [
                 'success' => fn () => $request->session()->get('success'),
                 'error' => fn () => $request->session()->get('error'),
@@ -59,28 +57,6 @@ class HandleInertiaRequests extends Middleware
                     )
                     : null,
             ],
-            'allCampaignCount' => Campaign::withTrashed()->count(),
-            'allUserCampaignCount' => $request->user() ? Campaign::withTrashed()
-                ->where('user_id', $request->user()->id)
-                ->count() : null,
-            'frontendCampaigns' => Campaign::with('category')
-                ->select([
-                    'id',
-                    'title',
-                    'slug',
-                    'goal',
-                    'featured',
-                    'campaign_images',
-                    'funds_raised',
-                    'expires_at'
-                ])
-                ->where('status', 'active')
-                ->where('is_complete', '!=', 'yes')
-                ->where('expires_at', '>', now())
-                ->inRandomOrder()
-                ->latest()
-                ->take(4)
-                ->get()
         ];
     }
 }

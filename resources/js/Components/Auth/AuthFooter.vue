@@ -3,16 +3,9 @@
 </script>
 
 <template>
-    <footer class="mt-auto">
-        <div class="nav mb-4">
-            <Link href="/" class="nav-link text-decoration-underline p-0">Need help?</Link>
+    <footer class="adminuiux-footer mt-auto">
+        <div class="container-fluid text-center">
+            <span class="small">Copyright @2024, <Link href="/" target="_blank">InvestmentUX - Adminuiux</Link></span>
         </div>
-
-        <p class="fs-xs mb-0">
-            © All rights reserved. Made by
-            <span class="animate-underline">
-                <a class="animate-target text-dark-emphasis text-decoration-none" href="/" target="_blank" rel="noreferrer">Ken De Nigerian</a>
-            </span>
-        </p>
     </footer>
 </template>

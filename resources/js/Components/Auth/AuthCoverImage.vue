@@ -4,12 +4,51 @@
 </script>
 
 <template>
-    <div class="d-none d-lg-block w-100 py-4 ms-auto" style="max-width: 1034px">
-        <div class="d-flex flex-column justify-content-end h-100 rounded-5 overflow-hidden">
-            <span class="position-absolute top-0 start-0 w-100 h-100 d-none-dark" style="background: linear-gradient(-90deg, #accbee 0%, #e7f0fd 100%)"></span>
-            <span class="position-absolute top-0 start-0 w-100 h-100 d-none d-block-dark" style="background: linear-gradient(-90deg, #1b273a 0%, #1f2632 100%)"></span>
-            <div class="ratio position-relative z-2" style="--cz-aspect-ratio: calc(1030 / 1032 * 100%)">
-                <img src="/public/assets/images/impact-home-hero.svg" alt="Girl" loading="lazy">
+    <div class="col-12 col-md-6 col-xl-8 p-4 d-none d-md-block">
+        <div class="card adminuiux-card bg-theme-1-space position-relative overflow-hidden h-100">
+            <div class="position-absolute start-0 top-0 h-100 w-100 coverimg opacity-75 z-index-0">
+                <img src="/public/assets/img/background-image/backgorund-image-1.jpg" alt="" />
+            </div>
+            <div class="card-body position-relative z-index-1">
+                <div class="row h-100 d-flex flex-column justify-content-center align-items-center gx-0 text-center">
+                    <div class="col-10 col-md-11 col-xl-8 mb-4 mx-auto">
+                        <!-- Slider container -->
+                        <div class="swiper swipernavpagination pb-5">
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <img src="/public/assets/img/investment/slider.png" alt="" class="mw-100 mb-3" />
+                                    <h2 class="text-white mb-3">Create and Manage your Investment appointments easily at your own very personalized space.</h2>
+                                    <p class="lead opacity-75">
+                                        You are at the best Adminuiux Investment UX<br />
+                                        HTML template demo preview
+                                    </p>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <img src="/public/assets/img/investment/slider.png" alt="" class="mw-100 mb-3" />
+                                    <h2 class="text-white mb-3">Create and Manage your Investment appointments easily at your own very personalized space.</h2>
+                                    <p class="lead opacity-75">
+                                        You are at the best Adminuiux Investment UX<br />
+                                        HTML template demo preview
+                                    </p>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <img src="/public/assets/img/investment/slider.png" alt="" class="mw-100 mb-3" />
+                                    <h2 class="text-white mb-3">Create and Manage your Investment appointments easily at your own very personalized space.</h2>
+                                    <p class="lead opacity-75">
+                                        You are at the best Adminuiux Investment UX<br />
+                                        HTML template demo preview
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- pagination -->
+                            <div class="swiper-pagination white bottom-0"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

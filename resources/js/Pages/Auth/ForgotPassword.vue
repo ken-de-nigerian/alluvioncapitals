@@ -1,12 +1,11 @@
-<script setup>
-    import { Head, useForm, usePage } from '@inertiajs/vue3'
+<script setup lang="ts">
+    import { Head, useForm, usePage, Link } from '@inertiajs/vue3'
     import { ref, computed, onMounted, onBeforeUnmount } from "vue";
-    import initPasswordToggle from '../../Components/Js/PasswordToggle.js'
 
-    import AuthLogo from '../../Components/Auth/AuthLogo.vue'
-    import AuthFooter from '../../Components/Auth/AuthFooter.vue'
-    import AuthCoverImage from '../../Components/Auth/AuthCoverImage.vue'
-    import LoadingButton from "../../Components/Button/LoadingButton.vue";
+    import AuthLogo from '@/Components/Auth/AuthLogo.vue'
+    import AuthCoverImage from '@/Components/Auth/AuthCoverImage.vue'
+    import LoadingButton from "@/Components/Button/LoadingButton.vue";
+    import {route} from "ziggy-js";
 
     const page = usePage()
     const countdown = ref(0)
@@ -59,7 +58,6 @@
 
     // Start countdown on the component mount if needed
     onMounted(() => {
-        initPasswordToggle()
         if (countdown.value > 0) {
             startCountdown(countdown.value)
         }
@@ -74,36 +72,44 @@
 <template>
     <Head :title="`${page.props.app.name} | Account - Password Recovery`" />
 
-    <div class="d-lg-flex">
-        <!-- Login form + Footer -->
-        <div class="d-flex flex-column min-vh-100 w-100 py-4 mx-auto me-lg-5" style="max-width: 416px">
+    <div class="row">
+        <div class="col-12 col-md-6 col-xl-4 minvheight-100 d-flex flex-column px-0">
+
             <!-- Auth-Logo -->
             <AuthLogo />
 
-            <h1 class="h2 mt-auto">Forgot password?</h1>
-            <p class="pb-2 pb-md-3">Enter the email address you used when you joined and we'll send you instructions to reset your password</p>
+            <div class="h-100 py-4 px-3">
+                <div class="row h-100 align-items-center justify-content-center mt-md-4">
+                    <div class="col-11 col-sm-8 col-md-11 col-xl-11 col-xxl-10 login-box">
+                        <h1 class="h2 mt-auto">Sorry! You have to be here,</h1>
+                        <div class="nav fs-sm mb-4">
+                            Provide your registered email address, we will send you an email with change
+                            password link with steps.
+                        </div>
 
-            <!-- Form -->
-            <form class="pb-4 mb-3 mb-lg-4" @submit.prevent="submit">
-                <div class="position-relative mb-4">
-                    <i class="ci-mail position-absolute top-50 start-0 translate-middle-y fs-lg ms-3"></i>
-                    <input id="email" type="email" class="form-control form-control-lg form-icon-start" :class="{ 'is-invalid': form.errors.email }" v-model="form.email" autocomplete="email" autofocus @focus="form.clearErrors('email')" placeholder="Email address">
-                    <div v-if="form.errors.email" class="invalid-tooltip bg-transparent py-0">
-                        {{ form.errors.email }}
+                        <!-- Form -->
+                        <form @submit.prevent="submit">
+                            <div class="form-floating mb-4">
+                                <input id="email" type="email" class="form-control" :class="{ 'is-invalid': form.errors.email }" v-model="form.email" autocomplete="email" autofocus @focus="form.clearErrors('email')" placeholder="Email">
+                                <div v-if="form.errors.email" class="invalid-feedback">{{ form.errors.email }}</div>
+                                <label for="email">Email Address</label>
+                            </div>
+
+                            <!-- Sign In Button -->
+                            <LoadingButton :custom-classes="'btn btn-lg btn-theme w-100 mb-4'" :processing="form.processing" type="submit" :disabled="isButtonDisabled">
+                                {{ buttonText }}
+                            </LoadingButton>
+
+                            <div class="text-center mb-3">
+                                Already have a password? <Link :href="route('login')" class=" ">Login</Link> here.
+                            </div>
+                        </form>
                     </div>
                 </div>
-
-                <!-- Sign In Button -->
-                <LoadingButton :processing="form.processing" type="submit" :disabled="isButtonDisabled">
-                    {{ buttonText }}
-                </LoadingButton>
-            </form>
-
-            <!-- Auth-Footer -->
-            <AuthFooter />
+            </div>
         </div>
 
-        <!-- Auth Cover image visible on screens > 992px wide (lg breakpoint) -->
+        <!-- Auth Cover image -->
         <AuthCoverImage />
     </div>
 </template>
